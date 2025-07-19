@@ -35,7 +35,7 @@ public final class Car implements Cloneable {
     }
 
     public Engine getEngine() {
-        return engine;
+        return engine != null ? engine.clone() : null;
     }
 
     // Equals
@@ -80,9 +80,9 @@ public final class Car implements Cloneable {
 
     // Implementation of method addWheel
     public Car addWheel(Wheel newWheel) {
-        List<Wheel> newWheels = new ArrayList<>(wheels.size());
+        List<Wheel> newWheels = new ArrayList<>();
         for (Wheel wheel : wheels) {
-            newWheels.add(wheel);
+            newWheels.add(wheel.clone());
         }
         newWheels.add(newWheel);
         return new Car(this.year, this.color, List.copyOf(newWheels), this.engine);
