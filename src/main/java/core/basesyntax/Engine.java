@@ -6,10 +6,17 @@ public class Engine implements Cloneable {
     private int horsePower;
     private String manufacturer;
 
-    // Constructor
+    // Constructors
     public Engine(int horsePower, String manufacturer) {
         this.horsePower = horsePower;
         this.manufacturer = manufacturer;
+    }
+
+    public Engine(Engine other) {
+        if (other == null) {
+            throw new IllegalArgumentException("Engine to copy can not be null!");
+        }
+        this.horsePower = other.horsePower;
     }
 
     // Getters and Setters

@@ -18,7 +18,7 @@ public final class Car implements Cloneable {
         this.year = year;
         this.color = color;
         this.wheels = List.copyOf(wheels);
-        this.engine = engine;
+        this.engine = engine != null ? engine.clone() : null;
     }
 
     // Getters
@@ -31,7 +31,11 @@ public final class Car implements Cloneable {
     }
 
     public List<Wheel> getWheels() {
-        return new ArrayList<>(wheels);
+        List<Wheel> copyWheel = new ArrayList<>();
+        for (Wheel wheel : wheels) {
+            copyWheel.add(wheel.clone());
+        }
+        return copyWheel;
     }
 
     public Engine getEngine() {
